@@ -1,0 +1,134 @@
+{
+    "sourceFile": "app/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 29,
+            "patches": [
+                {
+                    "date": 1770715019933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770717695747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,85 +1,17 @@\n \"use client\";\n \n import { RotationPreview } from \"@/components/rotation/RotationPreview\";\n+import { initialRotation } from \"@/data/initialRotation\";\n import type { Rotation } from \"@/types/rotation\";\n+import { useState } from \"react\";\n \n-const sampleRotation: Rotation = {\n-  id: \"rotation-1\",\n-  title: \"Boss Burst Rotation\",\n-  footerNote:\n-    \"To perform Combo Reversal, press both Combo Skills in quick succession.\",\n-  steps: [\n-    {\n-      id: \"step-1\",\n-      character: {\n-        id: \"chara-1\",\n-        name: \"Operator A\",\n-        image: \"/characters/a.png\",\n-      },\n-      action: \"skill\",\n-      trigger: { type: \"tap\" },\n-    },\n-    {\n-      id: \"step-2\",\n-      character: {\n-        id: \"chara-2\",\n-        name: \"Operator B\",\n-        image: \"/characters/b.png\",\n-      },\n-      action: \"combo\",\n-      trigger: { type: \"multi_tap\", count: 2 },\n-      transition: {\n-        label: \"Combo Reversal\",\n-      },\n-    },\n-    {\n-      id: \"step-3\",\n-      character: {\n-        id: \"chara-3\",\n-        name: \"Operator C\",\n-        image: \"/characters/c.png\",\n-      },\n-      action: \"ultimate\",\n-      trigger: { type: \"hold\" },\n-    },\n-  ],\n-};\n+const [rotation, setRotation] = useState<Rotation>(initialRotation);\n \n export default function Page() {\n   return (\n-    <main className=\"min-h-screen bg-slate-950 flex flex-col items-center justify-center gap-8 p-10\">\n-      \n-      {/* Rotation Preview */}\n-      <RotationPreview rotation={sampleRotation} />\n-\n-      {/* Action Buttons (placeholder) */}\n-      <div className=\"flex gap-4\">\n-        <button\n-          className=\"\n-            px-6 py-2\n-            rounded-lg\n-            bg-blue-600\n-            hover:bg-blue-500\n-            text-white\n-            font-medium\n-          \"\n-        >\n-          Download Image\n-        </button>\n-\n-        <button\n-          className=\"\n-            px-6 py-2\n-            rounded-lg\n-            bg-slate-700\n-            hover:bg-slate-600\n-            text-white\n-            font-medium\n-          \"\n-        >\n-          Edit Rotation\n-        </button>\n-      </div>\n+    <main className=\"min-h-screen bg-slate-950 flex gap-6 p-6\">\n+      <BuilderPanel rotation={rotation} onChange={setRotation} />\n+      <RotationPreview rotation={rotation} />\n     </main>\n   );\n }\n"
+                },
+                {
+                    "date": 1770718405388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n \"use client\";\n \n+import { BuilderPanel } from \"@/components/builder/BuilderPanel\";\n import { RotationPreview } from \"@/components/rotation/RotationPreview\";\n import { initialRotation } from \"@/data/initialRotation\";\n import type { Rotation } from \"@/types/rotation\";\n import { useState } from \"react\";\n"
+                },
+                {
+                    "date": 1770718456581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n import { initialRotation } from \"@/data/initialRotation\";\n import type { Rotation } from \"@/types/rotation\";\n import { useState } from \"react\";\n \n-const [rotation, setRotation] = useState<Rotation>(initialRotation);\n+export default function Page() {\n+  const [rotation, setRotation] = useState<Rotation>(initialRotation);\n \n-export default function Page() {\n   return (\n     <main className=\"min-h-screen bg-slate-950 flex gap-6 p-6\">\n       <BuilderPanel rotation={rotation} onChange={setRotation} />\n       <RotationPreview rotation={rotation} />\n"
+                },
+                {
+                    "date": 1770751468986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,17 +2,30 @@\n \n import { BuilderPanel } from \"@/components/builder/BuilderPanel\";\n import { RotationPreview } from \"@/components/rotation/RotationPreview\";\n import { initialRotation } from \"@/data/initialRotation\";\n-import type { Rotation } from \"@/types/rotation\";\n+import type { Rotation, Character } from \"@/types/rotation\";\n import { useState } from \"react\";\n \n+const CHARACTERS: Character[] = [\n+  { id: \"amiya\", name: \"Amiya\", image: \"/characters/akekuri.png\" },\n+  { id: \"chen\", name: \"Ch'en\", image: \"/characters/chen.png\" },\n+  { id: \"liskarm\", name: \"Liskarm\", image: \"/characters/liskarm.png\" },\n+];\n+\n export default function Page() {\n-  const [rotation, setRotation] = useState<Rotation>(initialRotation);\n+  const [rotation, setRotation] = useState<Rotation>({\n+    ...initialRotation,\n+    steps: initialRotation.steps || [],\n+  });\n \n   return (\n     <main className=\"min-h-screen bg-slate-950 flex gap-6 p-6\">\n-      <BuilderPanel rotation={rotation} onChange={setRotation} />\n+      <BuilderPanel\n+        rotation={rotation}\n+        onChange={setRotation}\n+        characters={CHARACTERS}\n+      />\n       <RotationPreview rotation={rotation} />\n     </main>\n   );\n }\n"
+                },
+                {
+                    "date": 1770752557940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import type { Rotation, Character } from \"@/types/rotation\";\n import { useState } from \"react\";\n \n const CHARACTERS: Character[] = [\n-  { id: \"amiya\", name: \"Amiya\", image: \"/characters/akekuri.png\" },\n+  { id: \"Akekuri\", name: \"Amiya\", image: \"/characters/akekuri.png\" },\n   { id: \"chen\", name: \"Ch'en\", image: \"/characters/chen.png\" },\n   { id: \"liskarm\", name: \"Liskarm\", image: \"/characters/liskarm.png\" },\n ];\n \n"
+                },
+                {
+                    "date": 1770752577932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import type { Rotation, Character } from \"@/types/rotation\";\n import { useState } from \"react\";\n \n const CHARACTERS: Character[] = [\n-  { id: \"Akekuri\", name: \"Amiya\", image: \"/characters/akekuri.png\" },\n+  { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n   { id: \"chen\", name: \"Ch'en\", image: \"/characters/chen.png\" },\n   { id: \"liskarm\", name: \"Liskarm\", image: \"/characters/liskarm.png\" },\n ];\n \n"
+                },
+                {
+                    "date": 1770752682592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n import { useState } from \"react\";\n \n const CHARACTERS: Character[] = [\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n-  { id: \"chen\", name: \"Ch'en\", image: \"/characters/chen.png\" },\n+  { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n   { id: \"liskarm\", name: \"Liskarm\", image: \"/characters/liskarm.png\" },\n ];\n \n export default function Page() {\n"
+                },
+                {
+                    "date": 1770752864411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \n const CHARACTERS: Character[] = [\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n   { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n-  { id: \"liskarm\", name: \"Liskarm\", image: \"/characters/liskarm.png\" },\n+  { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753116038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n const CHARACTERS: Character[] = [\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n   { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n   { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n+  { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753135101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,9 @@\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n   { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n   { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n   { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n+  { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753204376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n   { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n   { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n   { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n-  { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n+  { id: \"Ardelia\", name: \"Ardelia\", image: \"/characters/ardelia.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753289163,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n   { id: \"Alesh\", name: \"Alesh\", image: \"/characters/alesh.png\" },\n   { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n   { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n   { id: \"Ardelia\", name: \"Ardelia\", image: \"/characters/ardelia.png\" },\n+  { id: \"Avywenna\", name: \"Avywenna\", image: \"/characters/avywenna.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753334555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   { id: \"Antal\", name: \"Antal\", image: \"/characters/antal.png\" },\n   { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n   { id: \"Ardelia\", name: \"Ardelia\", image: \"/characters/ardelia.png\" },\n   { id: \"Avywenna\", name: \"Avywenna\", image: \"/characters/avywenna.png\" },\n+  { id: \"Catcher\", name: \"Catcher\", image: \"/characters/catcher.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753391009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n   { id: \"Arclight\", name: \"Arclight\", image: \"/characters/arclight.png\" },\n   { id: \"Ardelia\", name: \"Ardelia\", image: \"/characters/ardelia.png\" },\n   { id: \"Avywenna\", name: \"Avywenna\", image: \"/characters/avywenna.png\" },\n   { id: \"Catcher\", name: \"Catcher\", image: \"/characters/catcher.png\" },\n+  { id: \"Chen\", name: \"Chen\", image: \"/characters/chen-qianyu.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770753889611,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import { BuilderPanel } from \"@/components/builder/BuilderPanel\";\n import { RotationPreview } from \"@/components/rotation/RotationPreview\";\n import { initialRotation } from \"@/data/initialRotation\";\n import type { Rotation, Character } from \"@/types/rotation\";\n+import { downloadRotationAsImage } from \"@/utils/downloadRotation\";\n import { useState } from \"react\";\n \n const CHARACTERS: Character[] = [\n   { id: \"Akekuri\", name: \"Akekuri\", image: \"/characters/akekuri.png\" },\n@@ -30,7 +31,16 @@\n         onChange={setRotation}\n         characters={CHARACTERS}\n       />\n       <RotationPreview rotation={rotation} />\n+\n+      <div className=\"mt-4\">\n+        <button\n+          onClick={() => downloadRotationAsImage(\"rotation-preview\")}\n+          className=\"bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg\"\n+        >\n+          Download Rotation as Image\n+        </button>\n+      </div>\n     </main>\n   );\n }\n"
+                },
+                {
+                    "date": 1770754062474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,16 +31,7 @@\n         onChange={setRotation}\n         characters={CHARACTERS}\n       />\n       <RotationPreview rotation={rotation} />\n-\n-      <div className=\"mt-4\">\n-        <button\n-          onClick={() => downloadRotationAsImage(\"rotation-preview\")}\n-          className=\"bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg\"\n-        >\n-          Download Rotation as Image\n-        </button>\n-      </div>\n     </main>\n   );\n }\n"
+                },
+                {
+                    "date": 1770755569467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n   { id: \"Ardelia\", name: \"Ardelia\", image: \"/characters/ardelia.png\" },\n   { id: \"Avywenna\", name: \"Avywenna\", image: \"/characters/avywenna.png\" },\n   { id: \"Catcher\", name: \"Catcher\", image: \"/characters/catcher.png\" },\n   { id: \"Chen\", name: \"Chen\", image: \"/characters/chen-qianyu.png\" },\n+  { id: \"Da Pan\", name: \"Da Pan\", image: \"/characters/da-pan.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755641635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n   { id: \"Avywenna\", name: \"Avywenna\", image: \"/characters/avywenna.png\" },\n   { id: \"Catcher\", name: \"Catcher\", image: \"/characters/catcher.png\" },\n   { id: \"Chen\", name: \"Chen\", image: \"/characters/chen-qianyu.png\" },\n   { id: \"Da Pan\", name: \"Da Pan\", image: \"/characters/da-pan.png\" },\n+  { id: \"Ember\", name: \"Ember\", image: \"/characters/ember.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755700542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n   { id: \"Catcher\", name: \"Catcher\", image: \"/characters/catcher.png\" },\n   { id: \"Chen\", name: \"Chen\", image: \"/characters/chen-qianyu.png\" },\n   { id: \"Da Pan\", name: \"Da Pan\", image: \"/characters/da-pan.png\" },\n   { id: \"Ember\", name: \"Ember\", image: \"/characters/ember.png\" },\n+  { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755749628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n   { id: \"Chen\", name: \"Chen\", image: \"/characters/chen-qianyu.png\" },\n   { id: \"Da Pan\", name: \"Da Pan\", image: \"/characters/da-pan.png\" },\n   { id: \"Ember\", name: \"Ember\", image: \"/characters/ember.png\" },\n   { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n+  { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755799515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,9 @@\n   { id: \"Da Pan\", name: \"Da Pan\", image: \"/characters/da-pan.png\" },\n   { id: \"Ember\", name: \"Ember\", image: \"/characters/ember.png\" },\n   { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n   { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n+  { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755855268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,9 @@\n   { id: \"Ember\", name: \"Ember\", image: \"/characters/ember.png\" },\n   { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n   { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n   { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n+  { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770755898453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,9 @@\n   { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n   { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n   { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n   { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n+  { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756100025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n   { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n   { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n   { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n   { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n+  { id: \"Last Rite\", name: \"Last\", image: \"/characters/last-rite.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756150434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n   { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n   { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n   { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n   { id: \"Last Rite\", name: \"Last\", image: \"/characters/last-rite.png\" },\n+  { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756193712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n   { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n   { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n   { id: \"Last Rite\", name: \"Last\", image: \"/characters/last-rite.png\" },\n   { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n+  { id: \"Perlica\", name: \"Perlica\", image: \"/characters/perlica.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756243184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n   { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n   { id: \"Last Rite\", name: \"Last\", image: \"/characters/last-rite.png\" },\n   { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n   { id: \"Perlica\", name: \"Perlica\", image: \"/characters/perlica.png\" },\n+  { id: \"Pog\", name: \"Pog\", image: \"/characters/pogranichnik.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756324511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,13 +21,14 @@\n   { id: \"Endmin\", name: \"Endmin\", image: \"/characters/endministrator.png\" },\n   { id: \"Estella\", name: \"Estella\", image: \"/characters/estella.png\" },\n   { id: \"Fluorite\", name: \"Fluorite\", image: \"/characters/fluorite.png\" },\n   { id: \"Gilberta\", name: \"Gilberta\", image: \"/characters/gilberta.png\" },\n-  { id: \"Laevatain\", name: \"Laevatain\", image: \"/characters/laevatain.png\" },\n+  { id: \"Laevatain\", name: \"Laev\", image: \"/characters/laevatain.png\" },\n   { id: \"Last Rite\", name: \"Last\", image: \"/characters/last-rite.png\" },\n   { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n   { id: \"Perlica\", name: \"Perlica\", image: \"/characters/perlica.png\" },\n   { id: \"Pog\", name: \"Pog\", image: \"/characters/pogranichnik.png\" },\n+  { id: \"SnowS\", name: \"SnowS\", image: \"/characters/snowshine.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770756363526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n   { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n   { id: \"Perlica\", name: \"Perlica\", image: \"/characters/perlica.png\" },\n   { id: \"Pog\", name: \"Pog\", image: \"/characters/pogranichnik.png\" },\n   { id: \"SnowS\", name: \"SnowS\", image: \"/characters/snowshine.png\" },\n+  { id: \"Wulfgard\", name: \"Wulfgard\", image: \"/characters/wulfgard.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                }
+            ],
+            "date": 1770715019933,
+            "name": "Commit-0",
+            "content": "\"use client\";\n\nimport { RotationPreview } from \"@/components/rotation/RotationPreview\";\nimport type { Rotation } from \"@/types/rotation\";\n\nconst sampleRotation: Rotation = {\n  id: \"rotation-1\",\n  title: \"Boss Burst Rotation\",\n  footerNote:\n    \"To perform Combo Reversal, press both Combo Skills in quick succession.\",\n  steps: [\n    {\n      id: \"step-1\",\n      character: {\n        id: \"chara-1\",\n        name: \"Operator A\",\n        image: \"/characters/a.png\",\n      },\n      action: \"skill\",\n      trigger: { type: \"tap\" },\n    },\n    {\n      id: \"step-2\",\n      character: {\n        id: \"chara-2\",\n        name: \"Operator B\",\n        image: \"/characters/b.png\",\n      },\n      action: \"combo\",\n      trigger: { type: \"multi_tap\", count: 2 },\n      transition: {\n        label: \"Combo Reversal\",\n      },\n    },\n    {\n      id: \"step-3\",\n      character: {\n        id: \"chara-3\",\n        name: \"Operator C\",\n        image: \"/characters/c.png\",\n      },\n      action: \"ultimate\",\n      trigger: { type: \"hold\" },\n    },\n  ],\n};\n\nexport default function Page() {\n  return (\n    <main className=\"min-h-screen bg-slate-950 flex flex-col items-center justify-center gap-8 p-10\">\n      \n      {/* Rotation Preview */}\n      <RotationPreview rotation={sampleRotation} />\n\n      {/* Action Buttons (placeholder) */}\n      <div className=\"flex gap-4\">\n        <button\n          className=\"\n            px-6 py-2\n            rounded-lg\n            bg-blue-600\n            hover:bg-blue-500\n            text-white\n            font-medium\n          \"\n        >\n          Download Image\n        </button>\n\n        <button\n          className=\"\n            px-6 py-2\n            rounded-lg\n            bg-slate-700\n            hover:bg-slate-600\n            text-white\n            font-medium\n          \"\n        >\n          Edit Rotation\n        </button>\n      </div>\n    </main>\n  );\n}\n"
+        }
+    ]
+}

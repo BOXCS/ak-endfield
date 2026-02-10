@@ -1,0 +1,18 @@
+{
+    "sourceFile": "utils/downloadRotation.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770753838492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770753838492,
+            "name": "Commit-0",
+            "content": "// src/utils/downloadRotation.ts\r\nimport * as htmlToImage from \"html-to-image\";\r\nimport download from \"downloadjs\";\r\n\r\nexport function downloadRotationAsImage(elementId: string, fileName = \"rotation.png\") {\r\n  const node = document.getElementById(elementId);\r\n  if (!node) return;\r\n\r\n  htmlToImage\r\n    .toPng(node, { backgroundColor: \"#0f172a\" }) // sesuaikan background dengan preview\r\n    .then((dataUrl) => {\r\n      download(dataUrl, fileName, \"image/png\");\r\n    })\r\n    .catch((err) => console.error(\"Failed to generate image\", err));\r\n}\r\n"
+        }
+    ]
+}

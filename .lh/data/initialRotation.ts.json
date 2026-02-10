@@ -1,0 +1,22 @@
+{
+    "sourceFile": "data/initialRotation.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1770717631517,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770718970224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n       id: \"step-1\",\r\n       character: {\r\n         id: \"amiya\",\r\n         name: \"Amiya\",\r\n-        image: \"/characters/amiya.png\",\r\n+        image: \"/characters/akekuri.png\",\r\n       },\r\n       action: \"skill\",\r\n       trigger: { type: \"tap\" },\r\n       transition: { label: \"Quick\" },\r\n"
+                }
+            ],
+            "date": 1770717631517,
+            "name": "Commit-0",
+            "content": "// src/data/initialRotation.ts\r\nimport { Rotation } from \"@/types/rotation\";\r\n\r\nexport const initialRotation: Rotation = {\r\n  id: \"basic-rotation\",\r\n  title: \"Basic Rotation\",\r\n  steps: [\r\n    {\r\n      id: \"step-1\",\r\n      character: {\r\n        id: \"amiya\",\r\n        name: \"Amiya\",\r\n        image: \"/characters/amiya.png\",\r\n      },\r\n      action: \"skill\",\r\n      trigger: { type: \"tap\" },\r\n      transition: { label: \"Quick\" },\r\n    },\r\n    {\r\n      id: \"step-2\",\r\n      character: {\r\n        id: \"chen\",\r\n        name: \"Ch'en\",\r\n        image: \"/characters/chen.png\",\r\n      },\r\n      action: \"ultimate\",\r\n      trigger: { type: \"hold\" },\r\n    },\r\n  ],\r\n  footerNote: \"Arknights Endfield Rotation Preview\",\r\n};\r\n"
+        }
+    ]
+}

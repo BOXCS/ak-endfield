@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/rotation/StepCard.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770617604638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770617604638,
+            "name": "Commit-0",
+            "content": "import { RotationStep } from \"@/types/rotation\";\r\nimport { ActionBadge } from \"./ActionBadge\";\r\nimport { CharacterIcon } from \"./CharacterIcon\";\r\nimport { TriggerLabel } from \"./TriggerLabel\";\r\n\r\ninterface StepCardProps {\r\n  step: RotationStep;\r\n}\r\n\r\nexport function StepCard({ step }: StepCardProps) {\r\n  return (\r\n    <div className=\"flex flex-col items-center gap-3 w-[140px]\">\r\n      <ActionBadge action={step.action} />\r\n\r\n      <CharacterIcon chara={step.character} />\r\n\r\n      <TriggerLabel trigger={step.trigger} />\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

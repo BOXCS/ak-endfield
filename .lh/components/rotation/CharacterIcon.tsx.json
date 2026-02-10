@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/rotation/CharacterIcon.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770617098027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770617098027,
+            "name": "Commit-0",
+            "content": "import { Character } from \"@/types/rotation\";\r\n\r\ninterface CharacterIconProps {\r\n  chara: Character;\r\n}\r\n\r\nexport function CharacterIcon({ chara }: CharacterIconProps) {\r\n  return (\r\n    <div className=\"w-24 h-24 rounded-xl overflow-hidden border-2 border-white/20\">\r\n      <img\r\n        src={chara.image}\r\n        alt={chara.name}\r\n        className=\"w-full h-full object-cover\"\r\n      />\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

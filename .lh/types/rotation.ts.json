@@ -1,0 +1,22 @@
+{
+    "sourceFile": "types/rotation.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1770616588136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770750331634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,15 @@\n   | { type: \"hold\" }\r\n   | { type: \"multi_tap\"; count: number }\r\n   | { type: \"until_combo\" };\r\n \r\n+export type TriggerType =\r\n+  | \"tap\"\r\n+  | \"hold\"\r\n+  | \"multi_tap\"\r\n+  | \"until_combo\";\r\n \r\n+\r\n /* =========================\r\n    CHARACTER\r\n ========================= */\r\n \r\n@@ -39,9 +45,11 @@\n export interface Transition {\r\n   label?: string;   // contoh: \"Combo Reversal\"\r\n }\r\n \r\n+export type TransitionType = \"quick\" | \"delay\" | \"swap\";\r\n \r\n+\r\n /* =========================\r\n    ROTATION STEP\r\n ========================= */\r\n \r\n"
+                }
+            ],
+            "date": 1770616588136,
+            "name": "Commit-0",
+            "content": "/* =========================\r\n   ACTION TYPES\r\n========================= */\r\n\r\nexport type ActionType =\r\n  | \"basic\"\r\n  | \"skill\"\r\n  | \"combo\"\r\n  | \"ultimate\"\r\n  | \"final\";\r\n\r\n\r\n/* =========================\r\n   TRIGGER TYPES (SCALABLE)\r\n========================= */\r\n\r\nexport type Trigger =\r\n  | { type: \"tap\" }\r\n  | { type: \"hold\" }\r\n  | { type: \"multi_tap\"; count: number }\r\n  | { type: \"until_combo\" };\r\n\r\n\r\n/* =========================\r\n   CHARACTER\r\n========================= */\r\n\r\nexport interface Character {\r\n  id: string;\r\n  name: string;\r\n  image: string; // URL atau local asset path\r\n}\r\n\r\n\r\n/* =========================\r\n   TRANSITION\r\n========================= */\r\n\r\nexport interface Transition {\r\n  label?: string;   // contoh: \"Combo Reversal\"\r\n}\r\n\r\n\r\n/* =========================\r\n   ROTATION STEP\r\n========================= */\r\n\r\nexport interface RotationStep {\r\n  id: string;\r\n  character: Character;\r\n  action: ActionType;\r\n  trigger: Trigger;\r\n  transition?: Transition; \r\n}\r\n\r\n\r\n/* =========================\r\n   ROTATION ROOT\r\n========================= */\r\n\r\nexport interface Rotation {\r\n  id: string;\r\n  title: string;\r\n  steps: RotationStep[];\r\n  footerNote?: string;\r\n}\r\n"
+        }
+    ]
+}

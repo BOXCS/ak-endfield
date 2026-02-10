@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/rotation/TriggerLabel.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770616893285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770616893285,
+            "name": "Commit-0",
+            "content": "import { Trigger } from \"@/types/rotation\";\r\nimport { formatTrigger } from \"@/utils/format\";\r\n\r\ninterface TriggerLabelProps {\r\n  trigger: Trigger;\r\n}\r\n\r\nexport function TriggerLabel({ trigger }: TriggerLabelProps) {\r\n  return (\r\n    <div className=\"text-sm text-white/80 font-medium\">\r\n      + {formatTrigger(trigger)}\r\n    </div>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "utils/format.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1770616880943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1770616880943,
+            "name": "Commit-0",
+            "content": "import { Trigger } from \"@/types/rotation\";\r\n\r\nexport function formatTrigger(trigger: Trigger): string {\r\n  switch (trigger.type) {\r\n    case \"tap\":\r\n      return \"Tap\";\r\n\r\n    case \"hold\":\r\n      return \"Hold\";\r\n\r\n    case \"multi_tap\":\r\n      return `Tap x${trigger.count}`;\r\n\r\n    case \"until_combo\":\r\n      return \"Until Combo\";\r\n\r\n    default:\r\n      return \"\";\r\n  }\r\n}\r\n"
+        }
+    ]
+}
