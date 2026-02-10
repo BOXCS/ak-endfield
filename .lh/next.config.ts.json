@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1770759324818,
@@ -12,6 +12,14 @@
                 {
                     "date": 1770759672946,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,13 @@\n import { NextConfig } from \"next\";\n \n const nextConfig: NextConfig = {\n-  output: \"export\",          // wajib supaya bisa static export\n+  output: \"export\",\n   images: {\n-    unoptimized: true,       // wajib kalau pakai next/image\n+    unoptimized: true,\n   },\n-  // kalau hosting di repo GitHub Pages subpath, misal repo \"my-app\"\n-  // aktifkan basePath & assetPrefix\n-  // basePath: \"/my-app\",\n-  // assetPrefix: \"/my-app/\",\n+  basePath: \"/ak-endfield\",      // ganti my-app sesuai nama repo\n+  assetPrefix: \"/ak-endfield\",\n };\n \n+\n export default nextConfig;\n"
+                },
+                {
+                    "date": 1770760289381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,12 @@\n import { NextConfig } from \"next\";\n \n const nextConfig: NextConfig = {\n   output: \"export\",\n-  images: {\n-    unoptimized: true,\n-  },\n-  basePath: \"/ak-endfield\",      // ganti my-app sesuai nama repo\n+  images: { unoptimized: true },\n+  basePath: \"/ak-endfield\",\n   assetPrefix: \"/ak-endfield\",\n };\n \n \n+\n export default nextConfig;\n"
+                },
+                {
+                    "date": 1770760406650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,10 @@\n import { NextConfig } from \"next\";\n \n const nextConfig: NextConfig = {\n-  output: \"export\",\n+  output: \"export\",       // ini sudah menghasilkan static HTML\n   images: { unoptimized: true },\n   basePath: \"/ak-endfield\",\n   assetPrefix: \"/ak-endfield\",\n };\n \n-\n-\n export default nextConfig;\n"
                 }
             ],
             "date": 1770759324818,

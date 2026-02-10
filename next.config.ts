@@ -1,13 +1,10 @@
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
-  basePath: "/ak-endfield",      // ganti my-app sesuai nama repo
+  output: "export",       // ini sudah menghasilkan static HTML
+  images: { unoptimized: true },
+  basePath: "/ak-endfield",
   assetPrefix: "/ak-endfield",
 };
-
 
 export default nextConfig;

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1770760312211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770760359139,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n   \"version\": \"0.1.0\",\n   \"private\": true,\n   \"scripts\": {\n     \"dev\": \"next dev\",\n-    \"build\": \"next build && next export\",\n+    \"build\": \"next build\",\n     \"start\": \"next start\",\n     \"lint\": \"eslint\"\n   },\n   \"dependencies\": {\n"
+                }
+            ],
+            "date": 1770760312211,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"ak-endfield\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build && next export\",\n    \"start\": \"next start\",\n    \"lint\": \"eslint\"\n  },\n  \"dependencies\": {\n    \"clsx\": \"^2.1.1\",\n    \"downloadjs\": \"^1.4.7\",\n    \"html-to-image\": \"^1.11.13\",\n    \"lucide-react\": \"^0.563.0\",\n    \"next\": \"16.1.6\",\n    \"postcss\": \"^8.5.6\",\n    \"react\": \"19.2.3\",\n    \"react-dom\": \"19.2.3\"\n  },\n  \"devDependencies\": {\n    \"@tailwindcss/postcss\": \"^4.1.18\",\n    \"@types/downloadjs\": \"^1.4.6\",\n    \"@types/node\": \"^20\",\n    \"@types/react\": \"^19\",\n    \"@types/react-dom\": \"^19\",\n    \"eslint\": \"^9\",\n    \"eslint-config-next\": \"16.1.6\",\n    \"tailwindcss\": \"^4.1.18\",\n    \"typescript\": \"^5\"\n  }\n}\n"
+        }
+    ]
+}
