@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-static";
+
 import {
   Rotation,
   RotationStep,
@@ -20,7 +22,7 @@ interface BuilderPanelProps {
 }
 
 const ACTIONS: ActionType[] = ["basic", "skill", "ultimate", "combo"];
-const TRIGGERS = ["tap", "hold", "multi_tap", "until_combo"] as const;
+const TRIGGERS = ["tap", "hold", "multi_tap", "until_combo", "final_attack"] as const;
 const TRANSITIONS = ["quick", "delay", "swap"] as const;
 
 type TriggerType = (typeof TRIGGERS)[number];
@@ -40,6 +42,8 @@ function buildTrigger(type: TriggerType): Trigger {
       return { type: "hold" };
     case "until_combo":
       return { type: "until_combo" };
+    case "final_attack":
+      return { type: "final_attack" };
   }
 }
 

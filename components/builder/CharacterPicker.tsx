@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-static";
+
 import { useState, useMemo } from "react";
 import { Character } from "@/types/rotation";
 import clsx from "clsx";

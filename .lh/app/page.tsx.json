@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 29,
+            "activePatchIndex": 30,
             "patches": [
                 {
                     "date": 1770715019933,
@@ -124,6 +124,10 @@
                 {
                     "date": 1770756363526,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n   { id: \"Lifeng\", name: \"Lifeng\", image: \"/characters/lifeng.png\" },\n   { id: \"Perlica\", name: \"Perlica\", image: \"/characters/perlica.png\" },\n   { id: \"Pog\", name: \"Pog\", image: \"/characters/pogranichnik.png\" },\n   { id: \"SnowS\", name: \"SnowS\", image: \"/characters/snowshine.png\" },\n+  { id: \"Wulfgard\", name: \"Wulfgard\", image: \"/characters/wulfgard.png\" },\n ];\n \n export default function Page() {\n   const [rotation, setRotation] = useState<Rotation>({\n"
+                },
+                {
+                    "date": 1770759446513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,8 @@\n \"use client\";\n \n+export const dynamic = \"force-static\";\n+\n import { BuilderPanel } from \"@/components/builder/BuilderPanel\";\n import { RotationPreview } from \"@/components/rotation/RotationPreview\";\n import { initialRotation } from \"@/data/initialRotation\";\n import type { Rotation, Character } from \"@/types/rotation\";\n"
                 }
             ],
             "date": 1770715019933,

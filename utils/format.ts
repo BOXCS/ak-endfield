@@ -11,6 +11,9 @@ export function formatTrigger(trigger: Trigger): string {
     case "multi_tap":
       return `Tap x${trigger.count}`;
 
+    case "final_attack":
+      return "Final Attack";
+
     case "until_combo":
       return "Until Combo";
 

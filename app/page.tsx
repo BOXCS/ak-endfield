@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-static";
+
 import { BuilderPanel } from "@/components/builder/BuilderPanel";
 import { RotationPreview } from "@/components/rotation/RotationPreview";
 import { initialRotation } from "@/data/initialRotation";

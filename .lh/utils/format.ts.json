@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1770616880943,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1770756916957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,11 @@\n \r\n     case \"multi_tap\":\r\n       return `Tap x${trigger.count}`;\r\n \r\n+    case \"final_attack\":\r\n+      return \"Final Attack\";\r\n+\r\n     case \"until_combo\":\r\n       return \"Until Combo\";\r\n \r\n     default:\r\n"
                 }
             ],
             "date": 1770616880943,

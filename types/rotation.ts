@@ -18,12 +18,14 @@ export type Trigger =
   | { type: "tap" }
   | { type: "hold" }
   | { type: "multi_tap"; count: number }
+  | { type: "final_attack" }
   | { type: "until_combo" };
 
 export type TriggerType =
   | "tap"
   | "hold"
   | "multi_tap"
+  | "final_attack"
   | "until_combo";
 
 
