@@ -7,31 +7,40 @@ import { RotationPreview } from "@/components/rotation/RotationPreview";
 import { initialRotation } from "@/data/initialRotation";
 import type { Rotation, Character } from "@/types/rotation";
 import { downloadRotationAsImage } from "@/utils/downloadRotation";
+import { BASE_PATH } from "@/utils/basepath";
 import { useState } from "react";
 
-const CHARACTERS: Character[] = [
-  { id: "Akekuri", name: "Akekuri", image: "/characters/akekuri.png" },
-  { id: "Alesh", name: "Alesh", image: "/characters/alesh.png" },
-  { id: "Antal", name: "Antal", image: "/characters/antal.png" },
-  { id: "Arclight", name: "Arclight", image: "/characters/arclight.png" },
-  { id: "Ardelia", name: "Ardelia", image: "/characters/ardelia.png" },
-  { id: "Avywenna", name: "Avywenna", image: "/characters/avywenna.png" },
-  { id: "Catcher", name: "Catcher", image: "/characters/catcher.png" },
-  { id: "Chen", name: "Chen", image: "/characters/chen-qianyu.png" },
-  { id: "Da Pan", name: "Da Pan", image: "/characters/da-pan.png" },
-  { id: "Ember", name: "Ember", image: "/characters/ember.png" },
-  { id: "Endmin", name: "Endmin", image: "/characters/endministrator.png" },
-  { id: "Estella", name: "Estella", image: "/characters/estella.png" },
-  { id: "Fluorite", name: "Fluorite", image: "/characters/fluorite.png" },
-  { id: "Gilberta", name: "Gilberta", image: "/characters/gilberta.png" },
-  { id: "Laevatain", name: "Laev", image: "/characters/laevatain.png" },
-  { id: "Last Rite", name: "Last", image: "/characters/last-rite.png" },
-  { id: "Lifeng", name: "Lifeng", image: "/characters/lifeng.png" },
-  { id: "Perlica", name: "Perlica", image: "/characters/perlica.png" },
-  { id: "Pog", name: "Pog", image: "/characters/pogranichnik.png" },
-  { id: "SnowS", name: "SnowS", image: "/characters/snowshine.png" },
-  { id: "Wulfgard", name: "Wulfgard", image: "/characters/wulfgard.png" },
+// daftar karakter dan nama file gambarnya
+const CHAR_DATA = [
+  { id: "Akekuri", name: "Akekuri", file: "akekuri.png" },
+  { id: "Alesh", name: "Alesh", file: "alesh.png" },
+  { id: "Antal", name: "Antal", file: "antal.png" },
+  { id: "Arclight", name: "Arclight", file: "arclight.png" },
+  { id: "Ardelia", name: "Ardelia", file: "ardelia.png" },
+  { id: "Avywenna", name: "Avywenna", file: "avywenna.png" },
+  { id: "Catcher", name: "Catcher", file: "catcher.png" },
+  { id: "Chen", name: "Chen", file: "chen-qianyu.png" },
+  { id: "Da Pan", name: "Da Pan", file: "da-pan.png" },
+  { id: "Ember", name: "Ember", file: "ember.png" },
+  { id: "Endmin", name: "Endmin", file: "endministrator.png" },
+  { id: "Estella", name: "Estella", file: "estella.png" },
+  { id: "Fluorite", name: "Fluorite", file: "fluorite.png" },
+  { id: "Gilberta", name: "Gilberta", file: "gilberta.png" },
+  { id: "Laevatain", name: "Laev", file: "laevatain.png" },
+  { id: "Last Rite", name: "Last", file: "last-rite.png" },
+  { id: "Lifeng", name: "Lifeng", file: "lifeng.png" },
+  { id: "Perlica", name: "Perlica", file: "perlica.png" },
+  { id: "Pog", name: "Pog", file: "pogranichnik.png" },
+  { id: "SnowS", name: "SnowS", file: "snowshine.png" },
+  { id: "Wulfgard", name: "Wulfgard", file: "wulfgard.png" },
 ];
+
+// buat array CHARACTERS lengkap dengan BASE_PATH
+export const CHARACTERS: Character[] = CHAR_DATA.map(({ id, name, file }) => ({
+  id,
+  name,
+  image: `${BASE_PATH}/characters/${file}`,
+}));
 
 export default function Page() {
   const [rotation, setRotation] = useState<Rotation>({
