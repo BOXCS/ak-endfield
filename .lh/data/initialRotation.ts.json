@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1770717631517,
@@ -24,6 +24,14 @@
                 {
                     "date": 1770773660170,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,42 +1,8 @@\n // src/data/initialRotation.ts\r\n import { Character, Rotation } from \"@/types/rotation\";\r\n import { BASE_PATH } from \"@/utils/basepath\";\r\n \r\n-// daftar karakter dan nama file gambarnya\r\n-const CHAR_DATA = [\r\n-  { id: \"Akekuri\", name: \"Akekuri\", file: \"akekuri.png\" },\r\n-  { id: \"Alesh\", name: \"Alesh\", file: \"alesh.png\" },\r\n-  { id: \"Antal\", name: \"Antal\", file: \"antal.png\" },\r\n-  { id: \"Arclight\", name: \"Arclight\", file: \"arclight.png\" },\r\n-  { id: \"Ardelia\", name: \"Ardelia\", file: \"ardelia.png\" },\r\n-  { id: \"Avywenna\", name: \"Avywenna\", file: \"avywenna.png\" },\r\n-  { id: \"Catcher\", name: \"Catcher\", file: \"catcher.png\" },\r\n-  { id: \"Chen\", name: \"Chen\", file: \"chen-qianyu.png\" },\r\n-  { id: \"Da Pan\", name: \"Da Pan\", file: \"da-pan.png\" },\r\n-  { id: \"Ember\", name: \"Ember\", file: \"ember.png\" },\r\n-  { id: \"Endmin\", name: \"Endmin\", file: \"endministrator.png\" },\r\n-  { id: \"Estella\", name: \"Estella\", file: \"estella.png\" },\r\n-  { id: \"Fluorite\", name: \"Fluorite\", file: \"fluorite.png\" },\r\n-  { id: \"Gilberta\", name: \"Gilberta\", file: \"gilberta.png\" },\r\n-  { id: \"Laevatain\", name: \"Laev\", file: \"laevatain.png\" },\r\n-  { id: \"Last Rite\", name: \"Last\", file: \"last-rite.png\" },\r\n-  { id: \"Lifeng\", name: \"Lifeng\", file: \"lifeng.png\" },\r\n-  { id: \"Perlica\", name: \"Perlica\", file: \"perlica.png\" },\r\n-  { id: \"Pog\", name: \"Pog\", file: \"pogranichnik.png\" },\r\n-  { id: \"SnowS\", name: \"SnowS\", file: \"snowshine.png\" },\r\n-  { id: \"Wulfgard\", name: \"Wulfgard\", file: \"wulfgard.png\" },\r\n-  { id: \"Xaihi\", name: \"Xaihi\", file: \"xaihi.png\" },\r\n-  { id: \"Yvonne\", name: \"Yvonne\", file: \"yvonne.png\" },\r\n-];\r\n-\r\n-// buat array CHARACTERS lengkap dengan BASE_PATH\r\n-export const CHARACTERS: Character[] = CHAR_DATA.map(({ id, name, file }) => ({\r\n-  id,\r\n-  name,\r\n-  image: `${BASE_PATH}/characters/${file}`,\r\n-}));\r\n-\r\n export const initialRotation: Rotation = {\r\n   id: \"basic-rotation\",\r\n   title: \"Basic Rotation\",\r\n   steps: [\r\n"
+                },
+                {
+                    "date": 1770773757581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,10 @@\n   steps: [\r\n     {\r\n       id: \"step-1\",\r\n       character: {\r\n-        id: \"amiya\",\r\n-        name: \"Amiya\",\r\n+        id: \"Akekuri\",\r\n+        name: \"Akekuri\",\r\n         image: `${BASE_PATH}/characters/akekuri.png`,\r\n       },\r\n       action: \"skill\",\r\n       trigger: { type: \"tap\" },\r\n"
+                },
+                {
+                    "date": 1770773775155,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,10 +18,10 @@\n     },\r\n     {\r\n       id: \"step-2\",\r\n       character: {\r\n-        id: \"chen\",\r\n-        name: \"Ch'en\",\r\n+        id: \"Wulfgard\",\r\n+        name: \"Wulfgard\",\r\n         image: `${BASE_PATH}/characters/wulfgard.png`,\r\n       },\r\n       action: \"ultimate\",\r\n       trigger: { type: \"hold\" },\r\n"
                 }
             ],
             "date": 1770717631517,

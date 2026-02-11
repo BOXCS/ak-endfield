@@ -9,8 +9,8 @@ export const initialRotation: Rotation = {
     {
       id: "step-1",
       character: {
-        id: "amiya",
-        name: "Amiya",
+        id: "Akekuri",
+        name: "Akekuri",
         image: `${BASE_PATH}/characters/akekuri.png`,
       },
       action: "skill",
@@ -19,8 +19,8 @@ export const initialRotation: Rotation = {
     {
       id: "step-2",
       character: {
-        id: "chen",
-        name: "Ch'en",
+        id: "Wulfgard",
+        name: "Wulfgard",
         image: `${BASE_PATH}/characters/wulfgard.png`,
       },
       action: "ultimate",
