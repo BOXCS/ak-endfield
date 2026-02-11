@@ -33,6 +33,8 @@ const CHAR_DATA = [
   { id: "Pog", name: "Pog", file: "pogranichnik.png" },
   { id: "SnowS", name: "SnowS", file: "snowshine.png" },
   { id: "Wulfgard", name: "Wulfgard", file: "wulfgard.png" },
+  { id: "Xaihi", name: "Xaihi", file: "xaihi.png" },
+  { id: "Yvonne", name: "Yvonne", file: "yvonne.png" },
 ];
 
 // buat array CHARACTERS lengkap dengan BASE_PATH
