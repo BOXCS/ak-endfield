@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1770717631517,
@@ -12,6 +12,10 @@
                 {
                     "date": 1770718970224,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n       id: \"step-1\",\r\n       character: {\r\n         id: \"amiya\",\r\n         name: \"Amiya\",\r\n-        image: \"/characters/amiya.png\",\r\n+        image: \"/characters/akekuri.png\",\r\n       },\r\n       action: \"skill\",\r\n       trigger: { type: \"tap\" },\r\n       transition: { label: \"Quick\" },\r\n"
+                },
+                {
+                    "date": 1770773383527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n       id: \"step-1\",\r\n       character: {\r\n         id: \"amiya\",\r\n         name: \"Amiya\",\r\n-        image: \"/characters/akekuri.png\",\r\n+        image: \"ak-endfield/characters/akekuri.png\",\r\n       },\r\n       action: \"skill\",\r\n       trigger: { type: \"tap\" },\r\n       transition: { label: \"Quick\" },\r\n@@ -20,9 +20,9 @@\n       id: \"step-2\",\r\n       character: {\r\n         id: \"chen\",\r\n         name: \"Ch'en\",\r\n-        image: \"/characters/chen.png\",\r\n+        image: \"ak-endfield/characters/chen-qianyu.png\",\r\n       },\r\n       action: \"ultimate\",\r\n       trigger: { type: \"hold\" },\r\n     },\r\n"
                 }
             ],
             "date": 1770717631517,

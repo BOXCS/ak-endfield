@@ -10,7 +10,7 @@ export const initialRotation: Rotation = {
       character: {
         id: "amiya",
         name: "Amiya",
-        image: "/characters/akekuri.png",
+        image: "ak-endfield/characters/akekuri.png",
       },
       action: "skill",
       trigger: { type: "tap" },
@@ -21,7 +21,7 @@ export const initialRotation: Rotation = {
       character: {
         id: "chen",
         name: "Ch'en",
-        image: "/characters/chen.png",
+        image: "ak-endfield/characters/chen-qianyu.png",
       },
       action: "ultimate",
       trigger: { type: "hold" },
